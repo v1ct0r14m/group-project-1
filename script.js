@@ -31,9 +31,9 @@ var movieDropDown = function(movieTitle, movieYear, moviePoster) {
     var titleParagraph = document.createElement("p")
     var yearParagraph = document.createElement("p")
     var posterImage = document.createElement("img")
-    posterImage.setAttribute("src", moviePoster)
     posterImage.className = "form-movie-poster"
-
+    posterImage.setAttribute("src", moviePoster)
+    
     titleParagraph.innerText = movieTitle
     titleParagraph.className = "form-movie-title"
     yearParagraph.innerText = movieYear
@@ -43,17 +43,29 @@ var movieDropDown = function(movieTitle, movieYear, moviePoster) {
     $(movieBox).append(yearParagraph)
     $(movieBox).append(posterImage)
     $(movieSelectionContainer).append(movieBox)
-    console.log(posterImage)
 }
 
-var displayMovieInfo = function() {
-
-
-
-}
 
 $(inputBox).on("keyup", displaySearch)
 
-$(movieSelectionContainer).on("click", ".display-movie-box", function() {
+$(movieSelectionContainer).on("click", ".display-movie-box", function(event) {
     console.dir(this)
+
+    var title = document.createElement("p")
+    var year = document.createElement("p")
+    var poster = document.createElement("img")
+
+    title.innerText = this.children[0].innerText
+    year.innerText = this.children[1].innerText
+    poster.setAttribute("src", this.children[2].currentSrc)
+     console.log(title)
+     console.log(year)
+
+     var moviePoster = document.querySelector("#poster")
+     var movieTitle = document.querySelector("#movie-title")
+     var movieYear = document.querySelector("#movie-year")
+
+    $(moviePoster).empty().append(poster)
+    $(movieTitle).empty().append(title)
+    $(movieYear).empty().append(year)
 } )
