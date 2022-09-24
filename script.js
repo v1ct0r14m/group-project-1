@@ -1,8 +1,10 @@
+
+
 var movieSelectionContainer = $("#movie-selection")
 var inputBox = $("#input-box")
-console.log(inputBox)
 
-var displaySearch = function () {
+var displaySearch = function (event) {
+    event.preventDefault();
     var movie = $(inputBox).val().trim()
     console.log(movie)
 
@@ -46,7 +48,7 @@ var movieDropDown = function(movieTitle, movieYear, moviePoster) {
 }
 
 
-$(inputBox).on("keyup", displaySearch)
+$("#search-button").on("click", displaySearch )
 
 $(movieSelectionContainer).on("click", ".display-movie-box", function(event) {
     console.dir(this)
