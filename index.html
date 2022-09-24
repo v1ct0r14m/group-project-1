@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,14 @@
     <link rel="stylesheet" href="./style.css">
     <title>Project Numero Uno</title>
 </head>
+
 <body>
 
+    <!--holds the input box and list of movies when you type-->
     <div class="form-container">
-        <form action="">
-            <input id="input-box" type="text">
-        </form>
+
+        <input id="input-box" type="text">
+
 
         <div id="movie-selector">
             <ul id="movie-selection">
@@ -20,29 +23,30 @@
             </ul>
         </div>
 
-        <div id="movie-information-container">
+    </div>
 
-            <div id="poster">
+    <!--holds the information for the movie you want to selects-->
+    <div id="movie-information-container">
 
-            </div>
-
-            <div id="movie-information">
-                <h2 id="movie-title"></h2>
-                <p id="movie-year"></p>
-                <p id="genre"></p>
-                <p id="plot"></p>
-            </div>
-
-            <div id="provider-container">
-
-            </div>
-
-
+        <div id="poster">
 
         </div>
-        
+
+        <div id="movie-information">
+            <div id="movie-title"></div>
+            <div id="movie-year"></div>
+            <div id="genre"></div>
+            <div id="plot"></div>
+        </div>
+
+        <div id="provider-container">
+
+        </div>
+
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./script.js"></script>
 </body>
+
 </html>
