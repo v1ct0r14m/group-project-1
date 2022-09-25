@@ -28,25 +28,42 @@ var displaySearch = function (event) {
 
 var movieDropDown = function(movieTitle, movieYear, moviePoster) {
     
-    var movieBox = document.createElement("li")
-    movieBox.className = "display-movie-box"
-    var titleParagraph = document.createElement("p")
-    var yearParagraph = document.createElement("p")
+    //card movie 
+    var movieCard = document.createElement("div")
+    movieCard.className = "display-movie-box card"
+    //card Image
+    var cardImage = document.createElement("div")
+    cardImage.className = "card-image"
+    var figureImage = document.createElement('figure')
+    figureImage.className = "image is-4by3"
     var posterImage = document.createElement("img")
     posterImage.className = "form-movie-poster"
     posterImage.setAttribute("src", moviePoster)
+
     
+    // card content 
+    var contentCard = document.createElement('div');
+    contentCard.className = 'card-content';
+    var conctent = document.createElement('div')
+    conctent.className= 'content'
+    var titleParagraph = document.createElement("p")
+    var yearParagraph = document.createElement("p")
+        
     titleParagraph.innerText = movieTitle
     titleParagraph.className = "form-movie-title"
     yearParagraph.innerText = movieYear
     yearParagraph.className = "form-movie-year"
 
-    $(movieBox).append(titleParagraph)
-    $(movieBox).append(yearParagraph)
-    $(movieBox).append(posterImage)
-    $(movieSelectionContainer).append(movieBox)
+    //all appends are here
+    $(figureImage).append(posterImage)
+    $(cardImage).append(figureImage)
+    $(movieCard).append(cardImage)
+    $(conctent).append(titleParagraph)
+    $(conctent).append(yearParagraph)
+    $(contentCard).append(conctent)
+    $(movieCard).append(contentCard);
+    $(movieSelectionContainer).append(movieCard)
 }
-
 
 $("#search-button").on("click", displaySearch )
 
