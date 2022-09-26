@@ -23,3 +23,9 @@ body {
     margin-bottom: 25px;
 
 }
+
+.button {
+    background-color: transparent;;
+    border: none;
+    
+}
