@@ -47,6 +47,7 @@ var callPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
 }
 
 var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, moviePlot) {
+    console.log("helloooooooo", movieGenre, moviePlot)
     //creates box to store all the elemnts
     var movieCard = document.createElement("div")
     movieCard.className = "display-movie-box card" 
@@ -86,6 +87,8 @@ var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, mo
     $(movieCard).append(cardImage)
     $(conctent).append(titleParagraph)
     $(conctent).append(yearParagraph)
+    $(conctent).append(genreParagraph)
+    $(conctent).append(plotParagraph)
     $(contentCard).append(conctent)
     $(movieCard).append(contentCard);
     $(movieSelectionContainer).append(movieCard)
@@ -128,6 +131,7 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
     var movieTitle = document.querySelector("#movie-title")
     var movieYear = document.querySelector("#movie-year")
     var movieGenre = document.querySelector("#genre")
+
     var moviePlot = document.querySelector("#plot")
 
     //creates the element where the values will be stored
