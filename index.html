@@ -4,37 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
-
     <title>Project Numero Uno</title>
   </head>
+
   <body>
-    <p class="is-size-5 is-uppercase is-italic has-text-centered">
-      Movie Time!
-    </p>
+    <!--holds the input box and list of movies when you type-->
     <div class="form-container">
-      <form action="">
-        <div
-          class="input-container is-flex is-justify-content-center is-align-items-center"
-        >
-          <input
-            class="input is-success"
-            type="text"
-            placeholder="Search your movie"
-            id="input-box"
-          />
-          <div class="button">
-            <button class="button is-link search-button" id="search-button">
-              Search
-            </button>
-          </div>
+      <!-- <input id="input-box" type="text" /> -->
+      <div
+        class="input-container is-flex is-justify-content-center is-align-items-center"
+      >
+        <input
+          class="input is-success"
+          type="text"
+          placeholder="Search your movie"
+          id="input-box"
+        />
+        <div class="button">
+          <button class="button is-link search-button" id="search-button">
+            Search
+          </button>
         </div>
-      </form>
+      </div>
 
       <div id="movie-selector">
         <div
@@ -42,20 +38,22 @@
           id="movie-selection"
         ></div>
       </div>
-
-      <div id="movie-information-container">
-        <div id="poster"></div>
-
-        <div id="movie-information">
-          <h2 id="movie-title"></h2>
-          <p id="movie-year"></p>
-          <p id="genre"></p>
-          <p id="plot"></p>
-        </div>
-
-        <div id="provider-container"></div>
-      </div>
     </div>
+
+    <!--holds the information for the movie you want to selects-->
+    <div id="movie-information-container">
+      <div id="poster"></div>
+
+      <div id="movie-information">
+        <div id="movie-title"></div>
+        <div id="movie-year"></div>
+        <div id="genre"></div>
+        <div id="plot"></div>
+      </div>
+
+      <div id="provider-container"></div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./script.js"></script>
   </body>
