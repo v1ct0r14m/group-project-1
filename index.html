@@ -2,32 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <script src="https://kit.fontawesome.com/2f7bf6f30a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css" />
     <title>Project Numero Uno</title>
 </head>
 
 <body>
 
+    <header>
+        <h1>"Is it on Netflix?"</h1>
+    </header>
+
     <!--holds the input box and list of movies when you type-->
     <div class="form-container">
-
-        <input id="input-box" type="text">
-
-
-        <div id="movie-selector">
-            <ul id="movie-selection">
-
-            </ul>
+        <!-- <input id="input-box" type="text" /> -->
+        <div class="input-container is-flex is-justify-content-center is-align-items-center">
+            <input class="input is-success" type="text" placeholder="Search your movie" id="input-box" />
+            <div class="button">
+                <button class="button is-link search-button" id="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
         </div>
 
+        <div id="movie-selector">
+            <div class="is-flex is-justify-content-space-evenly is-flex-wrap-wrap is-align-items-center" id="movie-selection"></div>
+        </div>
     </div>
 
     <!--holds the information for the movie you want to selects-->
     <div id="movie-information-container">
-
         <div id="poster">
 
         </div>
@@ -39,10 +47,7 @@
             <div id="plot"></div>
         </div>
 
-        <div id="provider-container">
-
-        </div>
-
+        <div id="provider-container"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
