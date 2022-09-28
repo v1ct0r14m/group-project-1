@@ -64,6 +64,9 @@ var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, mo
     var movieCard = document.createElement("div")
     movieCard.className = "display-movie-box card"
 
+    var inputContainer = document.querySelector(".input-container")
+    inputContainer.classList.remove("starter-input-container")
+
     //card Image
     var cardImage = document.createElement("div")
     cardImage.className = "card-image"
