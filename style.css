@@ -1,31 +1,49 @@
 body {
-    /* background-image: url(./assets/image/denise-jans-Lq6rcifGjOU-unsplash.jpg); */
+    background-image:url(./image/background-image.jpg);
     background-position: center;
-    /* background-size: cover; */
-    /* height: 400px; */
-    /* background-size: auto auto; */
-    /* background-repeat: no-repeat; */
+     background-size: cover; 
+     height: 100%; 
+     background-size: auto auto; 
+     background-repeat: no-repeat;
     background-size: 100% 100%;
-
-   }
-   
-.input {
+    font-family: 'Permanent Marker', cursive;
+    
+    }
+    
+    .input {
     width: 20%;
-}
-
-.input-container {
-    height: 45vh;
-}
-
-.display-movie-box {
+    }
+    
+    .input-container {
+    height: 55vh;
+    }
+    
+    .display-movie-box {
     height: 400px;
     width: 200px;
     margin-bottom: 25px;
-
-}
-
-.button {
+    
+    }
+    
+    .display-movie-box:hover {
+    border: 5px solid transparent ;
+    opacity: .8;
+    }
+    
+    .button {
     background-color: transparent;;
     border: none;
     
-}
+    }
+    
+    .hide {
+    display: none;
+    }
+    
+    #movie-selector {
+    padding: 5%;
+    }
+
+    #poster {
+        margin-bottom: 20px;
+    }

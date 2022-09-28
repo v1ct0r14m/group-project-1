@@ -8,6 +8,16 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2f7bf6f30a.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./style.css" />
     <title>Project Numero Uno</title>
   </head>
@@ -27,7 +37,7 @@
         />
         <div class="button">
           <button class="button is-link search-button" id="search-button">
-            Search
+            <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
       </div>
@@ -42,9 +52,9 @@
 
     <!--holds the information for the movie you want to selects-->
     <div id="movie-information-container">
-      <div id="poster"></div>
+      <div class="is-flex is-justify-content-center" id="poster"></div>
 
-      <div id="movie-information">
+      <div class="box" id="movie-information">
         <div id="movie-title"></div>
         <div id="movie-year"></div>
         <div id="genre"></div>
