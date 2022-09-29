@@ -9,27 +9,55 @@ var searchMovie = function (event) {
     var movie = $(inputBox).val().trim()
     console.log(movie)
 
-    //api url uses the movie as the query parameter to call whatever movie the user types
-    var apiUrl = "http://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
+    if (movie === "") {
+        var noMovie = document.querySelector("#no-movie")
+        noMovie.classList.add("is-active")
 
-    fetch(apiUrl).then(function (response) {
-        response.json().then(function (data) {
-            movieSelectionContainer.empty()
-            console.log(data)
-            //for the lenght movie search results it will asign the values
-            for (var i = 0; i < data.Search.length; i++) {
+        $(noMovie).on("click", function () {
+            noMovie.classList.remove("is-active")
+        })
+    }
+    else {
+        //api url uses the movie as the query parameter to call whatever movie the user types
+        var apiUrl = "http://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
+
+        fetch(apiUrl).then(function (response) {
+            response.json().then(function (data) {
+                movieSelectionContainer.empty()
                 console.log(data)
-                var movieTitle = (data.Search[i].Title)
-                var movieYear = (data.Search[i].Year)
-                var moviePoster = (data.Search[i].Poster)
-                var imdbId = (data.Search[i].imdbID)
-                //calls the plot function and stores the asigned values to be used later
-                callPlot(imdbId, movieTitle, movieYear, moviePoster)
-                callProvider(imdbId)
-            }
+                if (data.Response == "False") {
+                    var notValid = document.querySelector("#not-valid")
+                    notValid.classList.add("is-active")
+
+                    $(notValid).on("click", function () {
+                        notValid.classList.remove("is-active")
+                    })
+                }
+                else {
+                    //for the lenght movie search results it will asign the values
+                    for (var i = 0; i < data.Search.length; i++) {
+                        console.log(data)
+                        var movieTitle = (data.Search[i].Title)
+                        var movieYear = (data.Search[i].Year)
+                        var moviePoster = (data.Search[i].Poster)
+                        var imdbId = (data.Search[i].imdbID)
+                        //calls the plot function and stores the asigned values to be used later
+                        callPlot(imdbId, movieTitle, movieYear, moviePoster)
+                    }
+                }
+
+            })
 
         })
-    })
+            .catch(function () {
+                var badInternet = document.querySelector("#bad-internet")
+                badInternet.classList.add("is-active")
+
+                $(badInternet).on("click", function () {
+                    badInternet.classList.remove("is-active")
+                })
+            })
+    }
 }
 
 var callPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
@@ -44,17 +72,6 @@ var callPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
             var moviePlot = data.Plot
             //calls function to display everything using all the variables as parameters
             movieDropDown(movieTitle, movieYear, moviePoster, movieGenre, moviePlot)
-        })
-    })
-}
-
-var callProvider = function(imdbId) {
-
-    var providerUrl = "https://api.watchmode.com/v1/title/" + imdbId + "/sources/?apiKey=nVHLIwU5mAmXtOJwbzoUbOnW6RaM85Y39M8Otx6L"
-    
-    fetch(providerUrl).then(function(response) {
-        response.json().then(function(data){
-            console.log(data)
         })
     })
 }
@@ -154,7 +171,7 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
     $(movieGenre).empty().append(genre)
     $(moviePlot).empty().append(plot)
 
-    if(plot.classList !== "hide") {
+    if (plot.classList !== "hide") {
         movieSelectionContainer.className = ("hide")
         $(movieSelectionContainer).empty().append(movieSelectionContainer)
     }
