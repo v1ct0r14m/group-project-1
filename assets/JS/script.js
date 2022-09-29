@@ -137,7 +137,7 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
 
     //calls the containers for each element from the html
     var movieInformationContainer = document.querySelector("#movie-information")
-    movieInformationContainer.className = "box"
+    movieInformationContainer.className = "box";
     var moviePoster = document.querySelector("#poster")
     var movieTitle = document.querySelector("#movie-title")
     var movieYear = document.querySelector("#movie-year")
