@@ -37,9 +37,12 @@ var searchMovie = function (event) {
                     //for the lenght movie search results it will asign the values
                     for (var i = 0; i < data.Search.length; i++) {
                         console.log(data)
-                        var movieTitle = (data.Search[i].Title)
-                        var movieYear = (data.Search[i].Year)
-                        var moviePoster = (data.Search[i].Poster)
+                        var movieTitle = data.Search[i].Title
+                        var movieYear = data.Search[i].Year
+                        var moviePoster = data.Search[i].Poster
+                        if (moviePoster === "N/A") {
+                            break
+                        }
                         var imdbId = (data.Search[i].imdbID)
                         //calls the plot function and stores the asigned values to be used later
                         callPlot(imdbId, movieTitle, movieYear, moviePoster)
@@ -93,7 +96,6 @@ var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, mo
     posterImage.className = "form-movie-poster"
     posterImage.setAttribute("src", moviePoster)
 
-
     // card content 
     var contentCard = document.createElement('div');
     contentCard.className = 'card-content';
@@ -128,6 +130,7 @@ var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, mo
     //creates the elements where the values will be stored
     var posterImage = document.createElement("img")
     posterImage.setAttribute("src", moviePoster)
+    
 }
 $("#search-button").on("click", searchMovie)
 
@@ -137,7 +140,7 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
 
     //calls the containers for each element from the html
     var movieInformationContainer = document.querySelector("#movie-information")
-    movieInformationContainer.className = "box"
+    movieInformationContainer.className = "box";
     var moviePoster = document.querySelector("#poster")
     var movieTitle = document.querySelector("#movie-title")
     var movieYear = document.querySelector("#movie-year")
@@ -164,6 +167,8 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
     genre.classList.remove("hide")
     plot.innerText = this.children[1].children[0].children[3].innerText
     plot.classList.remove("hide")
+
+    console.dir(poster)
 
     //appends elements to their containers
     $(moviePoster).empty().append(poster)
