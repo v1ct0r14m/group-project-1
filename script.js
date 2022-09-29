@@ -136,11 +136,12 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
     console.dir(this)
 
     //calls the containers for each element from the html
+    var movieInformationContainer = document.querySelector("#movie-information")
+    movieInformationContainer.className = "box"
     var moviePoster = document.querySelector("#poster")
     var movieTitle = document.querySelector("#movie-title")
     var movieYear = document.querySelector("#movie-year")
     var movieGenre = document.querySelector("#genre")
-
     var moviePlot = document.querySelector("#plot")
 
     //creates the element where the values will be stored
