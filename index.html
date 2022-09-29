@@ -1,52 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Noto+Serif:ital,wght@1,700&family=Permanent+Marker&family=Source+Sans+Pro:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <script
+      src="https://kit.fontawesome.com/2f7bf6f30a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Project Numero Uno</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <header>
+      <h1>"Is it on Netflix?"</h1>
+    </header>
 
     <!--holds the input box and list of movies when you type-->
     <div class="form-container">
-
-        <input id="input-box" type="text">
-
-
-        <div id="movie-selector">
-            <ul id="movie-selection">
-
-            </ul>
+      <!-- <input id="input-box" type="text" /> -->
+      <div
+        class="input-container starter-input-container is-flex is-justify-content-center is-align-items-center"
+      >
+        <input
+          class="input is-success"
+          type="text"
+          placeholder="Search your movie"
+          id="input-box"
+        />
+        <div class="button">
+          <button class="button is-link search-button" id="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
+      </div>
 
+      <div id="movie-selector">
+        <div
+          class="is-flex is-justify-content-space-evenly is-flex-wrap-wrap is-align-items-center"
+          id="movie-selection"
+        ></div>
+      </div>
     </div>
 
     <!--holds the information for the movie you want to selects-->
     <div id="movie-information-container">
+      <div id="poster"></div>
 
-        <div id="poster">
+      <div id="movie-information">
+        <div class="form-movie-title" id="movie-title"></div>
+        <div class="form-movie-year" id="movie-year"></div>
+        <div id="genre"></div>
+        <div class="form-movie-plot" id="plot"></div>
+      </div>
+    </div>
 
+    <div id="no-movie" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p>Please enter a movie title...</p>
+          <p>Or you will return here once more...</p>
         </div>
+      </div>
+    </div>
 
-        <div id="movie-information">
-            <div id="movie-title"></div>
-            <div id="movie-year"></div>
-            <div id="genre"></div>
-            <div id="plot"></div>
+    <div id="not-valid" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p>Not a valid movie, please try again...</p>
+          <p>Or you will return here once more...</p>
         </div>
+      </div>
+    </div>
 
-        <div id="provider-container">
+    <div id="bad-internet" class="modal">
+      <div class="modal-background"></div>
 
+      <div class="modal-content">
+        <div class="box">
+          <p>Could not connect to the server...</p>
         </div>
-
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./script.js"></script>
-</body>
-
+    <script src="./assets/JS/script.js"></script>
+  </body>
 </html>
