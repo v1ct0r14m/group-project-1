@@ -1,5 +1,6 @@
 var movieSelectionContainer = $("#movie-selection")
 var inputBox = $("#input-box")
+var moviesSelected = 1
 console.log(inputBox)
 
 //searches for the movie whenever you tyoe
@@ -18,49 +19,53 @@ var searchMovie = function (event) {
         })
     }
     else {
-        //api url uses the movie as the query parameter to call whatever movie the user types
-        var apiUrl = "http://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
+        callMovieInfo(movie)
+    }
+}
 
-        fetch(apiUrl).then(function (response) {
-            response.json().then(function (data) {
-                movieSelectionContainer.empty()
-                console.log(data)
-                if (data.Response == "False") {
-                    var notValid = document.querySelector("#not-valid")
-                    notValid.classList.add("is-active")
+var callMovieInfo = function (movie) {
+    //api url uses the movie as the query parameter to call whatever movie the user types
+    var apiUrl = "http://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
 
-                    $(notValid).on("click", function () {
-                        notValid.classList.remove("is-active")
-                    })
-                }
-                else {
-                    //for the lenght movie search results it will asign the values
-                    for (var i = 0; i < data.Search.length; i++) {
-                        console.log(data)
-                        var movieTitle = data.Search[i].Title
-                        var movieYear = data.Search[i].Year
-                        var moviePoster = data.Search[i].Poster
-                        if (moviePoster === "N/A") {
-                            break
-                        }
-                        var imdbId = (data.Search[i].imdbID)
-                        //calls the plot function and stores the asigned values to be used later
-                        callPlot(imdbId, movieTitle, movieYear, moviePoster)
+    fetch(apiUrl).then(function (response) {
+        response.json().then(function (data) {
+            movieSelectionContainer.empty()
+            console.log(data)
+            if (data.Response == "False") {
+                var notValid = document.querySelector("#not-valid")
+                notValid.classList.add("is-active")
+
+                $(notValid).on("click", function () {
+                    notValid.classList.remove("is-active")
+                })
+            }
+            else {
+                //for the lenght movie search results it will asign the values
+                for (var i = 0; i < data.Search.length; i++) {
+                    console.log(data)
+                    var movieTitle = data.Search[i].Title
+                    var movieYear = data.Search[i].Year
+                    var moviePoster = data.Search[i].Poster
+                    if (moviePoster === "N/A") {
+                        break
                     }
+                    var imdbId = (data.Search[i].imdbID)
+                    //calls the plot function and stores the asigned values to be used later
+                    callPlot(imdbId, movieTitle, movieYear, moviePoster)
                 }
-
-            })
+            }
 
         })
-            .catch(function () {
-                var badInternet = document.querySelector("#bad-internet")
-                badInternet.classList.add("is-active")
 
-                $(badInternet).on("click", function () {
-                    badInternet.classList.remove("is-active")
-                })
+    })
+        .catch(function () {
+            var badInternet = document.querySelector("#bad-internet")
+            badInternet.classList.add("is-active")
+
+            $(badInternet).on("click", function () {
+                badInternet.classList.remove("is-active")
             })
-    }
+        })
 }
 
 var callPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
@@ -130,13 +135,14 @@ var movieDropDown = function (movieTitle, movieYear, moviePoster, movieGenre, mo
     //creates the elements where the values will be stored
     var posterImage = document.createElement("img")
     posterImage.setAttribute("src", moviePoster)
-    
+
 }
 $("#search-button").on("click", searchMovie)
 
 //when you click on the list of movies it will display that movie and all of its information
 $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
     console.dir(this)
+    
 
     //calls the containers for each element from the html
     var movieInformationContainer = document.querySelector("#movie-information")
@@ -181,6 +187,107 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
         movieSelectionContainer.className = ("hide")
         $(movieSelectionContainer).empty().append(movieSelectionContainer)
     }
-
-    console.log("plot and genre work")
+    localStorage.clear()
+    moviesSelected += 0
+    localStorage.setItem(moviesSelected, title.textContent)
+    moviesSelected ++
 })
+
+
+var storage = function () {
+
+    var inputContainer = document.querySelector(".input-container")
+    inputContainer.classList.remove("starter-input-container")
+    inputContainer.classList.add("storage-input-container")
+
+        var storedTitle = (localStorage.getItem(moviesSelected))
+        console.log(storedTitle)
+        callHistoryInfo(storedTitle)
+}
+
+var callHistoryInfo = function (storedTitle) {
+    var apiUrl = "http://www.omdbapi.com?s=" + storedTitle + "&t=movie&plot=&apikey=6f89013e"
+
+    fetch(apiUrl).then(function (response) {
+        response.json().then(function (data) {
+            movieSelectionContainer.empty()
+            console.log(data)
+
+            //for the lenght movie search results it will asign the values
+            var movieTitle = data.Search[0].Title
+            var movieYear = data.Search[0].Year
+            var moviePoster = data.Search[0].Poster
+            var imdbId = (data.Search[0].imdbID)
+            //calls the plot function and stores the asigned values to be used later
+            callHistoryPlot(imdbId, movieTitle, movieYear, moviePoster)
+        })
+
+    })
+
+}
+
+
+var callHistoryPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
+    //uses the movie id and movie title as a parameter to call the plot
+    var plotUrl = "http://www.omdbapi.com?i=" + imdbId + "&t=" + movieTitle + "&plot=full&apikey=6f89013e"
+
+    fetch(plotUrl).then(function (response) {
+        response.json().then(function (data) {
+            //stored the genre and plot
+            var movieGenre = data.Genre
+            var moviePlot = data.Plot
+            //calls function to display everything using all the variables as parameters
+            displayHistoryPlot(movieTitle, movieYear, moviePoster, movieGenre, moviePlot)
+        })
+    })
+}
+
+var displayHistoryPlot = function (moTitle, moYear, moPoster, moGenre, moPlot) {
+
+    console.dir(movieYear)
+
+    //calls the containers for each element from the html
+    var movieInformationContainer = document.querySelector("#movie-information")
+    movieInformationContainer.className = "box";
+    var moviePoster = document.querySelector("#poster")
+    var movieTitle = document.querySelector("#movie-title")
+    var movieYear = document.querySelector("#movie-year")
+    var movieGenre = document.querySelector("#genre")
+    var moviePlot = document.querySelector("#plot")
+
+    //creates the element where the values will be stored
+    var poster = document.createElement("img")
+    poster.className = "stylePoster"
+    var title = document.createElement("h2")
+    title.className = "styleTitle"
+    var year = document.createElement("p")
+    year.className = "styleYear"
+    var genre = document.createElement("p")
+    genre.className = "styleGenre"
+    var plot = document.createElement("p")
+    plot.className = "stylePlot"
+
+    //sets the values of the elements
+    poster.setAttribute("src", moPoster)
+    title.innerText = moTitle
+    year.innerText = moYear
+    genre.innerText = moGenre
+    plot.innerText = moPlot
+
+    console.log(year)
+
+    //appends elements to their containers
+    $(moviePoster).empty().append(poster)
+    $(movieTitle).empty().append(title)
+    $(movieYear).empty().append(year)
+    $(movieGenre).empty().append(genre)
+    $(moviePlot).empty().append(plot)
+
+    
+}
+
+if(localStorage.getItem(moviesSelected)=== null) {
+}
+else {
+    storage()
+}
