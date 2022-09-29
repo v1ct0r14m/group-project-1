@@ -11,23 +11,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Noto+Serif:ital,wght@1,700&family=Permanent+Marker&family=Source+Sans+Pro:ital,wght@0,600;1,600&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+
     <script
       src="https://kit.fontawesome.com/2f7bf6f30a.js"
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Project Numero Uno</title>
   </head>
 
   <body>
+    <header>
+      <h1>"Is it on Netflix?"</h1>
+    </header>
+
     <!--holds the input box and list of movies when you type-->
     <div class="form-container">
       <!-- <input id="input-box" type="text" /> -->
       <div
-        class="input-container is-flex is-justify-content-center is-align-items-center"
+        class="input-container starter-input-container is-flex is-justify-content-center is-align-items-center"
       >
         <input
           class="input is-success"
@@ -52,13 +70,13 @@
 
     <!--holds the information for the movie you want to selects-->
     <div id="movie-information-container">
-      <div class="is-flex is-justify-content-center" id="poster"></div>
+      <div id="poster"></div>
 
-      <div class="box" id="movie-information">
-        <div id="movie-title"></div>
-        <div id="movie-year"></div>
+      <div id="movie-information">
+        <div class="form-movie-title" id="movie-title"></div>
+        <div class="form-movie-year" id="movie-year"></div>
         <div id="genre"></div>
-        <div id="plot"></div>
+        <div class="form-movie-plot" id="plot"></div>
       </div>
 
       <div id="provider-container"></div>
