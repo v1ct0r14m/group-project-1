@@ -25,7 +25,7 @@ var searchMovie = function (event) {
 
 var callMovieInfo = function (movie) {
     //api url uses the movie as the query parameter to call whatever movie the user types
-    var apiUrl = "http://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
+    var apiUrl = "https://www.omdbapi.com?s=" + movie + "&t=movie&plot=&apikey=6f89013e"
 
     fetch(apiUrl).then(function (response) {
         response.json().then(function (data) {
@@ -71,7 +71,7 @@ var callMovieInfo = function (movie) {
 var callPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
 
     //uses the movie id and movie title as a parameter to call the plot
-    var plotUrl = "http://www.omdbapi.com?i=" + imdbId + "&t=" + movieTitle + "&plot=full&apikey=6f89013e"
+    var plotUrl = "https://www.omdbapi.com?i=" + imdbId + "&t=" + movieTitle + "&plot=full&apikey=6f89013e"
 
     fetch(plotUrl).then(function (response) {
         response.json().then(function (data) {
