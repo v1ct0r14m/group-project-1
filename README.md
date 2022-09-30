@@ -39,5 +39,5 @@ Once we had an idea of how to structure the webpage we began talking about certa
 
 1. Look at the files in this [repository](https://github.com/v1ct0r14m/group-project-1).
 
-1. Go to the [movie-time](v1ct0r14m.github.io/group-project-1/) website.
+1. Go to the [movie-time](https://v1ct0r14m.github.io/group-project-1/) website.
 
