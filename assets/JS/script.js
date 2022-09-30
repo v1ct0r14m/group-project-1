@@ -1,6 +1,6 @@
 var movieSelectionContainer = $("#movie-selection")
 var inputBox = $("#input-box")
-var moviesSelected = 1
+var moviesSelected = 0
 console.log(inputBox)
 
 //searches for the movie whenever you tyoe
@@ -187,10 +187,9 @@ $(movieSelectionContainer).on("click", ".display-movie-box", function (event) {
         movieSelectionContainer.className = ("hide")
         $(movieSelectionContainer).empty().append(movieSelectionContainer)
     }
-    localStorage.clear()
-    moviesSelected += 0
+
     localStorage.setItem(moviesSelected, title.textContent)
-    moviesSelected ++
+    
 })
 
 
