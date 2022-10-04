@@ -205,7 +205,7 @@ var storage = function () {
 }
 
 var callHistoryInfo = function (storedTitle) {
-    var apiUrl = "http://www.omdbapi.com?s=" + storedTitle + "&t=movie&plot=&apikey=6f89013e"
+    var apiUrl = "https://www.omdbapi.com?s=" + storedTitle + "&t=movie&plot=&apikey=6f89013e"
 
     fetch(apiUrl).then(function (response) {
         response.json().then(function (data) {
@@ -228,7 +228,7 @@ var callHistoryInfo = function (storedTitle) {
 
 var callHistoryPlot = function (imdbId, movieTitle, movieYear, moviePoster) {
     //uses the movie id and movie title as a parameter to call the plot
-    var plotUrl = "http://www.omdbapi.com?i=" + imdbId + "&t=" + movieTitle + "&plot=full&apikey=6f89013e"
+    var plotUrl = "https://www.omdbapi.com?i=" + imdbId + "&t=" + movieTitle + "&plot=full&apikey=6f89013e"
 
     fetch(plotUrl).then(function (response) {
         response.json().then(function (data) {
